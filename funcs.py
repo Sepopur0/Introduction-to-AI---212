@@ -1,6 +1,5 @@
-from email.policy import default
 from data import *
-from hitori import *
+from profiler import *
 
 
 def checkbox(coor, coor_list):
@@ -193,13 +192,13 @@ def cheat_algori(screen, choice, type, matrixidx):
     algo = ""
     if type == 5:
         if choice == 2:  # dfs
-            res = hitori_cheat('dfgs', matrixidx)
+            res = hitori_profiler('dfgs', matrixidx)
             algo = "DFS "
             matrixlist = res[0]
             runtime = res[1]
             memused = res[2]
         else:
-            res = hitori_cheat('a-star', matrixidx)
+            res = hitori_profiler('a-star', matrixidx)
             algo = "A* "
             matrixlist = res[0]
             runtime = res[1]

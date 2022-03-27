@@ -1,8 +1,5 @@
 import numpy as np
 from queue import PriorityQueue, Queue, LifoQueue
-import os
-import time
-import psutil
 
 
 class State:
@@ -88,7 +85,7 @@ class State:
 
 
 def get_random_board(id=5):
-    path = 'board/{id}.txt'.format(id=id)
+    path = f'board/{id}.txt'
     return np.loadtxt(path, dtype=int)
 
 
@@ -225,21 +222,3 @@ class HitoriSolver:
             return BFGS()
         else:
             raise ValueError("Algorithm must be 'dfs', 'best-fs' or 'a-star'.")
-
-
-def get_mem():
-    a = psutil.Process(os.getpid())
-    return a.memory_info().rss
-# theone
-
-
-def hitori_cheat(type, id):
-    board = get_random_board(id)
-    hit = HitoriSolver(board)
-    mem_start = get_mem()
-    start = time.time()
-    result = hit.solve(algorithm=type)
-    runtime = time.time()-start
-    mem_end = get_mem()
-    memused = (mem_end-mem_start)
-    return [result, runtime, memused]
