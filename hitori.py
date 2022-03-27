@@ -3,6 +3,8 @@ from queue import PriorityQueue, Queue, LifoQueue
 import os
 import time
 import psutil
+
+
 class State:
     def __init__(self, board, dept=0, parent=None):
         self.board = board
@@ -226,29 +228,18 @@ class HitoriSolver:
 
 
 def get_mem():
-    a=psutil.Process(os.getpid())
+    a = psutil.Process(os.getpid())
     return a.memory_info().rss
-#theone
+# theone
+
+
 def hitori_cheat(type, id):
-    a = get_random_board(id)
-    hit = HitoriSolver(a)
-    mem_start=get_mem()
-    start=time.time()
-    if type==0:
-        dfgs = hit.solve(algorithm='dfgs') 
-        mem_end=get_mem() 
-        runtime= time.time()-start
-        memused=(mem_end-mem_start)
-        return [dfgs,runtime,memused]
-    elif type==1:
-        a_star = hit.solve(algorithm='a-star')
-        mem_end=get_mem()
-        runtime=time.time()-start
-        memused=(mem_end-mem_start)
-        return [a_star,runtime,memused]
-    else:   
-        bestfs = hit.solve(algorithm='best-fs')
-        mem_end=get_mem()
-        runtime=time.time()-start
-        memused=(mem_end-mem_start)
-        return [bestfs,runtime,memused]
+    board = get_random_board(id)
+    hit = HitoriSolver(board)
+    mem_start = get_mem()
+    start = time.time()
+    result = hit.solve(algorithm=type)
+    runtime = time.time()-start
+    mem_end = get_mem()
+    memused = (mem_end-mem_start)
+    return [result, runtime, memused]
