@@ -1,21 +1,19 @@
 from hitori import HitoriSolver, get_random_board
-import os
-import time
-import psutil
+import timeit
+from memory_profiler import memory_usage
 
 
-def get_mem():
-    a = psutil.Process(os.getpid())
-    return a.memory_info().rss
+def hitori_profiler(algorithm, board_id):
+    setup = f"""
+from hitori import HitoriSolver, get_random_board
+a = get_random_board(id={board_id})
+hit = HitoriSolver(a)
+"""
+    stmt = f"hit.solve(algorithm='{algorithm}')"
+    time_used = timeit.timeit(stmt, setup=setup, number=1)
 
-
-def hitori_profiler(type, id):
-    board = get_random_board(id)
+    board = get_random_board(board_id)
     hit = HitoriSolver(board)
-    mem_start = get_mem()
-    start = time.time()
-    result = hit.solve(algorithm=type)
-    runtime = time.time()-start
-    mem_end = get_mem()
-    memused = (mem_end-mem_start)
-    return [result, runtime, memused]
+    mem_used = memory_usage((hit.solve, (algorithm,)), max_usage=True)
+
+    return time_used, mem_used
