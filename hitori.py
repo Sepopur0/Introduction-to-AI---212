@@ -93,7 +93,6 @@ class HitoriSolver:
 
     def __init__(self, board):
         self.initial_state = State(board=board)
-        self.initial_state.score = self.heuristic(self.initial_state)
 
     def expand(self, current):
         indexes = np.nonzero(current.board)
@@ -191,6 +190,7 @@ class HitoriSolver:
             raise Exception("Can not reach goal state.")
 
         def BestFS(f):
+            self.initial_state.score = f(self.initial_state)
             p = PriorityQueue()
             p.put(self.initial_state)
             explored = set()
