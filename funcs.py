@@ -67,7 +67,7 @@ def draw_hashi(zone, opt=-1):
         choice = random.randint(0,19)
     else:
         choice = opt
-    matrix = load_map( "board_hashi/{choice}.txt")
+    matrix = load_map( f"board_hashi/{choice}.txt")
     # matrix=hashi_list_norm[choice]
     for i in range(0, 7):
         for j in range(0, 7):
