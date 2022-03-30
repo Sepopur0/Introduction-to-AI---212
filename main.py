@@ -113,4 +113,5 @@ def everything(screen):
     return cheat_algori(screen, act, step_1, choice)
 
 
-main()
+if __name__ == "__main__":
+    main()
