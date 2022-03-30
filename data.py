@@ -19,6 +19,7 @@ cheatbutton_coor = [(1000, 1150, 150, 225), (1000, 1150, 225, 275),
 # font
 font = pygame.font.SysFont('calibri', 25, True, False)
 font_number = pygame.font.SysFont('calibri', 30, True, False)
+font_title = pygame.font.SysFont('opensansregular',60,True,True)
 # colors
 black = (0, 0, 0)
 white = (255, 255, 255)

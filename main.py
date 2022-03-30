@@ -33,43 +33,7 @@ def everything(screen):
                 act = checkbox(mousepos, gamebutton_coor)
                 if (act > 0 and not(pau)) or act == 0 or act == 5:
                     screen.blit(s_1, (1000, 100+75*act))
-                # elif not(pau):
-                #     if act==-1:
-                #         pos=checkpos(mousepos,modu)
-                #         if (modu==7 or modu==10) and pos!=-1:
-                #             if matrix[pos//modu][pos%modu]==0:
-                #                 trupos=-1
-                #             else:
-                #                 trupos=pos
-                #         else:
-                #             trupos=pos
             elif ev.type == MOUSEBUTTONUP:
-                # if act==-1 and not(pau) and trupos!=-1:
-                #     if modu==5 or modu==8:
-                #         draw_hitori_element(zone,-1,(modu//7),pos)
-                #         matrix_solve[pos//modu][pos%modu]=-1
-                #     elif modu==7 or modu==10:
-                #         mousepos=pygame.mouse.get_pos()
-                #         posend=checkpos(mousepos,modu)
-                #         if matrix[posend//modu][posend%modu]!=0:
-                #             if(trupos//modu==posend//modu):
-                #                 while(trupos<posend):
-                #                     trupos+=1
-                #                     if not(matrix[posend//modu][trupos%modu] in range(1,9)):
-                #                         matrix_solve[posend//modu][trupos%modu]=(matrix_solve[posend//modu][trupos%modu]+11)%33
-                #                         draw_hashi_element(zone,matrix_solve[posend//modu][trupos%modu],modu//8,trupos,0)
-                #                     else:
-                #                         break
-                #             elif(trupos%modu==posend%modu):
-                #                 while(trupos<posend):
-                #                     trupos+=modu
-                #                     if not(matrix[trupos//modu][posend%modu] in range(1,9)):
-                #                         matrix_solve[trupos//modu][posend%modu]=(matrix_solve[trupos//modu][posend%modu]+11)%33
-                #                         draw_hashi_element(zone,matrix_solve[trupos//modu][posend%modu],modu//8,trupos,1)
-                #                     else:
-                #                         break
-                #     screen.blit(zone,(400,75))
-                #     trupos=-1
                 if act == 0:
                     pau = not(pau)
                     if pau:
@@ -111,7 +75,6 @@ def everything(screen):
         if cheatactiv != -1:
             break
     return cheat_algori(screen, act, step_1, choice)
-
 
 if __name__ == "__main__":
     main()

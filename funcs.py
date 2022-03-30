@@ -1,7 +1,6 @@
 from data import *
-from profiler import *
-
-
+from profiler import hitori_profiler,get_random_board,hashi_profiler
+from board_n_tree_hashi import load_map
 def checkbox(coor, coor_list):
     i = 0
     for lis in coor_list:
@@ -65,10 +64,10 @@ def drawbutton(screen, str, top, left):
 def draw_hashi(zone, opt=-1):
     choice = -1
     if opt == -1:
-        choice = random.randint(0, 4)
+        choice = random.randint(0,19)
     else:
         choice = opt
-    matrix = []
+    matrix = load_map( "board_hashi/0.txt")
     # matrix=hashi_list_norm[choice]
     for i in range(0, 7):
         for j in range(0, 7):
@@ -76,8 +75,7 @@ def draw_hashi(zone, opt=-1):
     return choice
 
 
-# direc is 0 for horizontal, 1 for vertical
-def draw_hashi_element(zone, number, pos, direc=0):
+def draw_hashi_element(zone, number, pos):
     modu = 1
     wid = 1
     modu = 7
@@ -95,20 +93,18 @@ def draw_hashi_element(zone, number, pos, direc=0):
                            modu), 40+wid/2+wid*(pos//modu)), 20, 3)
         zone.blit(font_number.render(str(number), False, white),
                   (wid/2+wid*(pos % modu)+33, wid/2+wid*(pos//modu)+26))
-    if direc == 0:
-        if number == 11:
-            pygame.draw.line(zone, gray, (40+wid*(pos % modu), 40+wid/2+wid*(pos//modu)),
+    if number == 21:
+        pygame.draw.line(zone, gray, (40+wid*(pos % modu), 40+wid/2+wid*(pos//modu)),
                              (40+wid+wid*(pos % modu), 40+wid/2+wid*(pos//modu)), 8)
-        elif number == 22:
-            pygame.draw.line(zone, gray, (40+wid*(pos % modu), 35+wid/2+wid*(pos//modu)),
+    elif number == 22:
+        pygame.draw.line(zone, gray, (40+wid*(pos % modu), 35+wid/2+wid*(pos//modu)),
                              (40+wid+wid*(pos % modu), 35+wid/2+wid*(pos//modu)), 5)
-            pygame.draw.line(zone, gray, (40+wid*(pos % modu), 45+wid/2+wid*(pos//modu)),
+        pygame.draw.line(zone, gray, (40+wid*(pos % modu), 45+wid/2+wid*(pos//modu)),
                              (40+wid+wid*(pos % modu), 45+wid/2+wid*(pos//modu)), 5)
-    else:
-        if number == 11:
+    elif number == 11:
             pygame.draw.line(zone, gray, (40+wid/2+wid*(pos % modu), 40+wid*(pos//modu)),
                              (40+wid/2+wid*(pos % modu), 40+wid+wid*(pos//modu)), 8)
-        elif number == 22:
+    elif number == 12:
             pygame.draw.line(zone, gray, (35+wid/2+wid*(pos % modu), 40+wid*(pos//modu)),
                              (35+wid/2+wid*(pos % modu), 40+wid+wid*(pos//modu)), 5)
             pygame.draw.line(zone, gray, (45+wid/2+wid*(pos % modu), 40+wid*(pos//modu)),
@@ -141,6 +137,7 @@ def draw_hitori_element(zone, number, pos):  # number is 0 if black box
 
 def menu(screen, stringlist):  # return 0 for hitori, 1 for hashi
     i = 0
+    screen.blit(font_title.render("Not a puzzle game",False,white),(350,100))
     for string in stringlist:
         drawbutton(screen, string, 575, 300+75*i)
         i += 1
@@ -184,12 +181,12 @@ def cheat_algori(screen, choice, type, matrixidx):
     else:
         draw_hashi(zone, matrixidx)
     screen.blit(zone, (400, 75))
-    screen.blit(font.render("Please wait some time", False, white), (535, 580))
+    screen.blit(font.render("Just a minute...", False, white), (575, 590))
     pygame.display.update()
-    runtime = -1
-    memused = -1
     matrixlist = []
     algo = ""
+    runtime = -1
+    memused = -1
     if type == 5:
         if choice == 2:  # dfs
             res = hitori_profiler('dfgs', matrixidx)
@@ -204,7 +201,18 @@ def cheat_algori(screen, choice, type, matrixidx):
             runtime = res[1]
             memused = res[2]
     else:
-        z = 4
+        if choice==2:
+            res=hashi_profiler("dfgs",matrixidx)
+            algo= "DFS "
+            matrixlist=res[0]
+            runtime=res[1]
+            memused=res[2]
+        else:
+            res=hashi_profiler("a-star",matrixidx)
+            algo= "A* "
+            matrixlist=res[0]
+            runtime=res[1]
+            memused=res[2]
     drawbutton(screen, "Pause", 1000, 150)
     drawbutton(screen, "Statistic: Off", 1000, 225)
     if choice == 2:
@@ -243,13 +251,14 @@ def cheat_algori(screen, choice, type, matrixidx):
                     showstat = not(showstat)
                     if showstat:
                         drawbutton(screen, "Statistic: On", 1000, 225)
-                        screen.blit(font.render(algo+"Time: " +
-                                    str(runtime), False, white), (30, 300))
-                        screen.blit(font.render(
-                            algo+"Memory used: "+str(memused)+"B", False, white), (30, 350))
+                        screen.blit(font.render("Testcase No."+str(matrixidx), False, white), (30, 200))
+                        screen.blit(font.render(algo+"Time:", False, white), (30, 250))
+                        screen.blit(font.render(str(runtime)+"s", False, white), (30, 300))
+                        screen.blit(font.render(algo+"Maximum memory used:", False, white), (30, 350))
+                        screen.blit(font.render(str(memused)+"MiB", False, white), (30, 400))
                     else:
                         drawbutton(screen, "Statistic: Off", 1000, 225)
-                        pygame.draw.rect(screen, black, (20, 290, 370, 300))
+                        pygame.draw.rect(screen, black, (20, 190, 370, 450))
                 elif act == 2:
                     return [choice, type, matrixidx]
                 elif act == 3:
@@ -270,6 +279,11 @@ def cheat_algori(screen, choice, type, matrixidx):
                         for j in range(0, 5):
                             draw_hitori_element(
                                 zone, matrixlist[idx][i][j], 5*i+j)
+                else:
+                    for i in range(0, 7):
+                        for j in range(0, 7):
+                            draw_hashi_element(
+                                zone, matrixlist[idx][i][j], 7*i+j)
                 screen.blit(zone, (400, 75))
         pygame.display.update()
         pygame.time.delay(1)

@@ -85,7 +85,7 @@ class State:
 
 
 def get_random_board(id=5):
-    path = f'board/{id}.txt'
+    path = f'board_hitori/{id}.txt'
     return np.loadtxt(path, dtype=int)
 
 
