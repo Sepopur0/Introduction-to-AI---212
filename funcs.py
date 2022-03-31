@@ -202,7 +202,7 @@ def cheat_algori(screen, choice, type, matrixidx):
             memused = res[2]
     else:
         if choice==2:
-            res=hashi_profiler("dfgs",matrixidx)
+            res=hashi_profiler("dfs",matrixidx)
             algo= "DFS "
             matrixlist=res[0]
             runtime=res[1]
