@@ -1,0 +1,120 @@
+Board ID: 0
+DFS Time usage: 0.9059684000000001 s
+DFS Memory usage: 51.9296875 MB
+A* Time usage: 0.03141309999999997 s
+A* Memory usage: 51.02734375 MB
+--------------------------------------------------
+Board ID: 1
+DFS Time usage: 0.2516707999999994 s
+DFS Memory usage: 51.02734375 MB
+A* Time usage: 0.03858179999999933 s
+A* Memory usage: 51.02734375 MB
+--------------------------------------------------
+Board ID: 2
+DFS Time usage: 5.713021599999999 s
+DFS Memory usage: 61.34765625 MB
+A* Time usage: 0.05271240000000077 s
+A* Memory usage: 51.55859375 MB
+--------------------------------------------------
+Board ID: 3
+DFS Time usage: 4.224060699999999 s
+DFS Memory usage: 57.55859375 MB
+A* Time usage: 0.0409284999999997 s
+A* Memory usage: 51.59375 MB
+--------------------------------------------------
+Board ID: 4
+DFS Time usage: 1.4439088999999967 s
+DFS Memory usage: 52.3515625 MB
+A* Time usage: 0.04697590000000673 s
+A* Memory usage: 51.59375 MB
+--------------------------------------------------
+Board ID: 5
+DFS Time usage: 1.351914199999996 s
+DFS Memory usage: 52.46875 MB
+A* Time usage: 0.04833879999999624 s
+A* Memory usage: 51.59375 MB
+--------------------------------------------------
+Board ID: 6
+DFS Time usage: 6.613662499999997 s
+DFS Memory usage: 59.53125 MB
+A* Time usage: 0.03894840000000244 s
+A* Memory usage: 51.59375 MB
+--------------------------------------------------
+Board ID: 7
+DFS Time usage: 7.082683899999999 s
+DFS Memory usage: 60.69921875 MB
+A* Time usage: 0.10461860000000911 s
+A* Memory usage: 51.57421875 MB
+--------------------------------------------------
+Board ID: 8
+DFS Time usage: 3.278743399999996 s
+DFS Memory usage: 55.19921875 MB
+A* Time usage: 0.04076029999998809 s
+A* Memory usage: 51.57421875 MB
+--------------------------------------------------
+Board ID: 9
+DFS Time usage: 5.01894999999999 s
+DFS Memory usage: 57.69921875 MB
+A* Time usage: 0.9483606000000009 s
+A* Memory usage: 52.765625 MB
+--------------------------------------------------
+Board ID: 10
+DFS Time usage: 0.11715159999999969 s
+DFS Memory usage: 52.078125 MB
+A* Time usage: 0.04032589999999914 s
+A* Memory usage: 52.078125 MB
+--------------------------------------------------
+Board ID: 11
+DFS Time usage: 0.36290580000000716 s
+DFS Memory usage: 52.078125 MB
+A* Time usage: 0.05294349999999781 s
+A* Memory usage: 52.078125 MB
+--------------------------------------------------
+Board ID: 12
+DFS Time usage: 5.6032194999999945 s
+DFS Memory usage: 59.375 MB
+A* Time usage: 0.038343900000000986 s
+A* Memory usage: 52.1875 MB
+--------------------------------------------------
+Board ID: 13
+DFS Time usage: 2.796615799999998 s
+DFS Memory usage: 54.875 MB
+A* Time usage: 0.02946439999999484 s
+A* Memory usage: 52.1875 MB
+--------------------------------------------------
+Board ID: 14
+DFS Time usage: 5.776403899999991 s
+DFS Memory usage: 60.6875 MB
+A* Time usage: 0.16744639999998867 s
+A* Memory usage: 52.16015625 MB
+--------------------------------------------------
+Board ID: 15
+DFS Time usage: 0.8687686999999755 s
+DFS Memory usage: 52.41015625 MB
+A* Time usage: 2.8815212999999744 s
+A* Memory usage: 55.94140625 MB
+--------------------------------------------------
+Board ID: 16
+DFS Time usage: 11.313950399999982 s
+DFS Memory usage: 69.23828125 MB
+A* Time usage: 0.03278720000000135 s
+A* Memory usage: 52.36328125 MB
+--------------------------------------------------
+Board ID: 17
+DFS Time usage: 12.089160599999985 s
+DFS Memory usage: 66.36328125 MB
+A* Time usage: 0.3964368000000036 s
+A* Memory usage: 52.36328125 MB
+--------------------------------------------------
+Board ID: 18
+DFS Time usage: 1.750918100000007 s
+DFS Memory usage: 53.2578125 MB
+A* Time usage: 2.215109500000011 s
+A* Memory usage: 54.08203125 MB
+--------------------------------------------------
+Board ID: 19
+DFS Time usage: 6.50125700000001 s
+DFS Memory usage: 60.65625 MB
+A* Time usage: 1.117598600000008 s
+A* Memory usage: 53.6953125 MB
+--------------------------------------------------
