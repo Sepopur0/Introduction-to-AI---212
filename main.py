@@ -7,7 +7,7 @@ def main():
     res = everything(screen)
     while True:
         if res[2] == -4:
-            everything(screen)
+            res=everything(screen)
         elif res[2] in range(0, 19):
             res = cheat_algori(screen, 5-res[0], res[1], res[2])
 
